@@ -59,17 +59,17 @@ int main(int ac, char **av)
 	if (!check_args(ac, av))
 		return (FAILURE);
 	init_data(data);
-	if (create_philo(philo, data->nb_philo) == FAILURE)
+	if (pthread_create_philo(philo, data->nb_philo) == FAILURE)
 		return (FAILURE);
-	join_philo(philo, data->nb_philo);
+	pthread_join_philo(philo, data->nb_philo);
 	return (SUCCESS);
 }
 
 /******************************************************************************/
 
-/* create_philo */
+/* pthread_create_philo */
 
-int	create_philo(t_philo *philo, int nb_philo)
+int	pthread_create_philo(t_philo *philo, int nb_philo)
 {
 	int	i;
 
@@ -90,7 +90,7 @@ int	create_philo(t_philo *philo, int nb_philo)
 
 /*****************************************************************************/
 
-void	join_philo(t_philo *philo, int nb_philo)
+void	pthread_join_philo(t_philo *philo, int nb_philo)
 {
 	int	i;
 

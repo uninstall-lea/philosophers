@@ -6,13 +6,13 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 18:04:00 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 22:25:24 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	create_philo(void)
+int	pthread_create_philo(void)
 {
 	int		i;
 	t_data	*data;
@@ -37,7 +37,7 @@ int	create_philo(void)
 	return (SUCCESS);
 }
 
-void	join_philo(void)
+void	pthread_join_philo(void)
 {
 	int		i;
 	t_data	*data;

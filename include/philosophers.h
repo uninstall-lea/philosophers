@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 18:44:24 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 22:25:24 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int		init_data(int ac, char **av);
 void	init_philo(int i);
 void	init_mutex(int i);
 		/* PTHREAD TOOLS FILE */
-int		create_philo(void);
-void	join_philo(void);
+int		pthread_create_philo(void);
+void	pthread_join_philo(void);
 		/* SINGLETON FILE */
 t_data	*_data(void);
 t_philo *_philo(int i);
