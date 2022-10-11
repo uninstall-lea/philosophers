@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:57 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 18:28:24 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 18:40:42 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	init_philo(int i)
 	t_philo	*philo;
 	
 	philo = _philo(i);
-	//printf("i : %d\n", i);
 	philo->num = i + 1;
 	philo->nb_meal = 0;
 	philo->left_fork = NULL;

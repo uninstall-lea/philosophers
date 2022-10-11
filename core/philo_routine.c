@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 18:29:12 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 18:47:24 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	get_timestamp(void)
 {
-	int				timestamp;
-	t_data			*data;
-	struct timeval	current_time;
+	int			timestamp;
+	t_data		*data;
+	t_timeval	current_time;
 	
 	data = _data();
 	gettimeofday(&current_time, NULL);
-	timestamp = (current_time.tv_sec - data->start_time.tv_sec) * 1000 
-    		+ (current_time.tv_usec - data->start_time.tv_usec) / 1000;
+	timestamp = (current_time.tv_sec - data->start_time.tv_sec) * 1000
+				+ (current_time.tv_usec - data->start_time.tv_usec) / 1000;
 	return (timestamp);
 }
 

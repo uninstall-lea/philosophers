@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 18:28:08 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 18:44:24 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define FALSE	 0
 # define SUCCESS 1
 # define FAILURE 0
+
+typedef	struct timeval t_timeval;
 
 /* STRUCTS */
 typedef struct s_philo
@@ -56,7 +58,7 @@ typedef struct s_data
 	int	is_everyone_alive;
 	t_mutex	mutex;
 	t_philo	*philo;
-	struct timeval	start_time;
+	t_timeval start_time;
 }	t_data;
 
 
