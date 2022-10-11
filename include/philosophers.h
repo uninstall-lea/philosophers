@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/03 22:27:24 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 18:28:08 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <string.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 /* DEFINES */
 # define YES	 1
@@ -55,6 +56,7 @@ typedef struct s_data
 	int	is_everyone_alive;
 	t_mutex	mutex;
 	t_philo	*philo;
+	struct timeval	start_time;
 }	t_data;
 
 

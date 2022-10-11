@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:57 by lea               #+#    #+#             */
-/*   Updated: 2022/10/03 22:26:53 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 18:28:24 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	init_data(int ac, char **av)
 	else
 		data->nb_meal_max = INT_MAX;
 	data->is_everyone_alive = TRUE;
+	gettimeofday(&(data->start_time), NULL);
 	return (SUCCESS);
 }
 

@@ -1,0 +1,239 @@
+/* gettimeofday */
+
+struct	timeval {
+	time_t	tv_sec; // for seconds since 01/01/1970
+	time_t tv_usec; // for microseconds since last second
+}
+
+// 1 million microsec = 1 sec
+// sec * 1000
+// micro / 1000
+
+#include <sys/time.h>
+
+int	main(void)
+{
+	struct timeval current_time;
+
+	gettimeofday(current_time, NULL);
+}
+
+/******************************************************************************/
+
+/* pthread_create */
+
+#include <pthread.h>
+
+int main(void)
+{
+	pthread_t 	*philo_id;
+	void		*philo;
+
+	myargs = NULL;
+	if (pthread_create(philo_id, NULL &philo_routine, philo)) // on protège
+		printf("Pthread_create failed\n");
+}
+
+/******************************************************************************/
+
+/* pthread_join */
+
+#include <pthread.h>
+
+int	main(void)
+{
+	pthread_join(philo_id, NULL);
+}
+
+/******************************************************************************/
+
+/* exemple of philo main */
+
+int main(int ac, char **av)
+{
+	int		i;
+	t_data	*data;
+	t_philo	*philo;
+	
+	i = 0;
+	if (!check_args(ac, av))
+		return (FAILURE);
+	init_data(data);
+	if (create_philo(philo, data->nb_philo) == FAILURE)
+		return (FAILURE);
+	join_philo(philo, data->nb_philo);
+	return (SUCCESS);
+}
+
+/******************************************************************************/
+
+/* create_philo */
+
+int	create_philo(t_philo *philo, int nb_philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < nb_philo)
+	{
+		init_philo(i);
+		if (pthread_create(&philo[i]->philo_id, NULL, &philo_routine, &philo[i])) // on protège
+		{
+			printf("Pthread_create failed");
+			while (i--)
+				pthread_join(philo[i]->philo_id, NULL);
+			return (FAILURE);
+		}
+		i++;
+	}
+}
+
+/*****************************************************************************/
+
+void	join_philo(t_philo *philo, int nb_philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < nb_philo)
+	{
+		pthread_join(philo[i]->philo_id, NULL);
+		i++;
+	}
+}
+
+/******************************************************************************/
+
+/* parse args */
+
+int	check_args(int ac, char **av)
+{
+
+	if (ac != 5 || ac != 6)
+	{	
+		printf("Wrong number of args given\n");
+		return (FAILURE);
+	}
+	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[1]) > 200)
+	
+		printf("Wrong number of philos given\n");
+		return (FAILURE);
+	}
+	if (ft_atoi(av[2]) < 0 || ft_atoi(av[3]) < 0 || ft_atoi(av[4]) < 0)
+	{
+		printf("Donne plus de temps radin !\n");
+		return (FAILURE);
+	}
+	if (ac == 6 && ft_atoi(av[5]) <= 0)
+	{
+		printf("You can't eat a negative amount of time !\n");
+		return (FAILURE);
+	}
+	return (SUCCESS);
+}
+
+
+/******************************************************************************/
+
+/* initiate data */
+
+void	init_data(int ac, char **av)
+{
+	t_data	*data;
+	
+	data = _data();
+	data->philo = malloc(sizeof(t_philo) * ft_atoi(av[1]));
+	if (!data->philo)
+	{
+		printf("Memory allocation failed\n");
+		return (FAILURE);
+	}
+	data->nb_philo = ft_atoi(av[1]);
+	data->time_to_die = ft_atoi(av[2]);
+	data->time_to_eat = ft_atoi(av[3]);
+	data->time_to_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		data->nb_meal_max = ft_atoi(av[5]);
+	else
+		data->nb_meal_max = INT_MAX;
+	data->is_everyone_alive = TRUE;
+}
+
+t_data	*_data(void)
+{
+	static int		init;
+	static t_data	*data;
+
+	if (init == YES)
+	{
+		init == NO;
+		ft_bzero(&data, sizeof(t_data));
+	}
+	return (&data);
+}
+
+/******************************************************************************/
+
+/* initiate philos */
+
+void	init_philo(int i)
+{
+	t_philo	*philo;
+	
+	philo = _philo(i);
+	philo->num = i + 1;
+	philo->nb_meal = 0;
+	philo->finished = FALSE;
+	philo->right_fork = NULL;
+	philo->left_fork = NULL;
+	philo->time_since_last_meal = 0;
+}
+
+t_philo *_philo(int i)
+{
+	t_data		*data;
+	static int		init;
+	static	t_philo	*philo;
+
+	if (init == YES)
+	{
+		init == NO;
+		ft_bzero(&philo[i], sizeof(t_philo));
+	}
+	data = _data();
+	return (&data->philo[i]);
+}
+
+/******************************************************************************/
+
+/* exemple of philo_routine */
+
+int	everyone_alive_and_hungry(t_philo *philo)
+{
+	t_data	*data;
+
+	data = _data();
+	if (data->is_everyone_alive == TRUE && philo->nb_meal <= data->nb_meal_max)
+		return (TRUE);
+	else
+		return (FALSE);
+}
+
+void	*philo_routine(t_philo *philo)
+{
+	t_data	*data;
+	int		timestamp;
+
+	data = _data();
+	get_timestamp(&timestamp);
+	while (everyone_alive_and_hungry == TRUE)
+	{
+		printf("%d %d is thinking\n", timestamp, philo->nb_philo);
+		printf("%d %d has taken a fork\n", timestamp, philo->nb_philo);
+		printf("%d %d is eating\n", timestamp, philo->nb_philo);
+		printf("%d %d is sleeping\n", timestamp, philo->nb_philo);
+	}
+}
+
+// timestamp = (curent_time.tv_sec - start_time.sec) * 1000 
+//           + (current_time.tv_usec - start_time.usec) / 1000

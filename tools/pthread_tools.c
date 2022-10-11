@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/10/03 22:27:10 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/11 18:04:00 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	create_philo(void)
 	{
 		init_philo(i);
 		philo = _philo(i);
-		init_mutex(i);
+//		init_mutex(i);
 		if (pthread_create(&philo[i].philo_id, NULL, &philo_routine, &philo[i])) // on protège
 		{
 			printf("Pthread_create failed\n");
