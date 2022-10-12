@@ -6,11 +6,11 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/10/03 19:28:02 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/12 15:36:40 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../inc/philosophers.h"
 
 int	everyone_alive_and_hungry(t_philo *philo)
 {

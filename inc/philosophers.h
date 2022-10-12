@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 22:25:24 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/12 15:32:43 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,24 +64,24 @@ typedef struct s_data
 
 /* PROTOTYPES */
 	/* CORE FOLDER */
-	/* PHILO ROUTINE FILE */
+		/* PHILO ROUTINE FILE */
 void	*philo_routine(void *philo);
 	/* TOOLS FOLDER */
 		/* CHECK ARGS FILE */
 int		check_args(int ac, char **av);
 		/* CHECK STATUS FILE */
 int		everyone_alive_and_hungry(t_philo *philo);
-		/* INIT TOOLS FILE */
+		/* INIT FILE */
 int		init_data(int ac, char **av);
 void	init_philo(int i);
 void	init_mutex(int i);
-		/* PTHREAD TOOLS FILE */
+		/* PTHREAD FILE */
 int		pthread_create_philo(void);
 void	pthread_join_philo(void);
 		/* SINGLETON FILE */
 t_data	*_data(void);
 t_philo *_philo(int i);
-		/* LIBFT */
+		/* NOT_LIBFT */
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);
 

@@ -6,11 +6,11 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:59:58 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 22:25:24 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/12 15:36:40 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../inc/philosophers.h"
 
 int main(int ac, char **av)
 {

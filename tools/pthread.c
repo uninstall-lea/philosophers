@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pthread_tools.c                                    :+:      :+:    :+:   */
+/*   pthread.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/10/11 22:25:24 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/12 15:36:40 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philosophers.h"
+#include "../inc/philosophers.h"
 
 int	pthread_create_philo(void)
 {
@@ -24,7 +24,7 @@ int	pthread_create_philo(void)
 	{
 		init_philo(i);
 		philo = _philo(i);
-//		init_mutex(i);
+		init_mutex(i);
 		if (pthread_create(&philo[i].philo_id, NULL, &philo_routine, &philo[i])) // on protège
 		{
 			printf("Pthread_create failed\n");
