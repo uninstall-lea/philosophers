@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:57 by lea               #+#    #+#             */
-/*   Updated: 2022/10/12 15:36:40 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/13 23:30:40 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	init_mutex(int i)
 	t_philo	*philo;
 
 	philo = _philo(i);
-	pthread_mutex_init(philo->left_fork, NULL);
-	pthread_mutex_init(philo->right_fork, NULL);
+	pthread_mutex_init(&(philo->left_fork), NULL);
+	pthread_mutex_init(&(philo->right_fork), NULL);
 }
 
 int	init_data(int ac, char **av)
@@ -52,8 +52,6 @@ void	init_philo(int i)
 	philo = _philo(i);
 	philo->num = i + 1;
 	philo->nb_meal = 0;
-	philo->left_fork = NULL;
-	philo->right_fork = NULL;
 	philo->finished = FALSE;
 	philo->time_since_last_meal = 0;
 }

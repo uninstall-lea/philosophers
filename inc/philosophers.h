@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/12 15:32:43 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/13 23:32:52 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <string.h>
+# include <unistd.h>
 # include <pthread.h>
 # include <sys/time.h>
 
@@ -39,8 +40,8 @@ typedef struct s_philo
 	int	finished;
 	int	time_since_last_meal;
 	pthread_t philo_id;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	right_fork;
 }	t_philo;
 
 typedef	struct s_mutex

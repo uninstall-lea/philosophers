@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:18 by lea               #+#    #+#             */
-/*   Updated: 2022/10/12 15:36:40 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/13 23:14:47 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_args(int ac, char **av)
 		printf("Wrong number of philos given\n");
 		return (FAILURE);
 	}
-	if (ft_atoi(av[2]) < 0 || ft_atoi(av[3]) < 0 || ft_atoi(av[4]) < 0)
+	if (ft_atoi(av[2]) <= 0 || ft_atoi(av[3]) <= 0 || ft_atoi(av[4]) <= 0)
 	{
 		printf("Donne plus de temps radin !\n");
 		return (FAILURE);

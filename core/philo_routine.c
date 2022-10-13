@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/10/12 15:36:40 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/13 23:31:58 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ void	*philo_routine(void *philo_ptr)
 	{
 		timestamp = get_timestamp();
 		printf("%d %d is thinking\n", timestamp, philo->num);
-		pthread_mutex_lock(philo->left_fork);
+		pthread_mutex_lock(&(philo->left_fork));
 		printf("%d %d has taken a fork\n", timestamp, philo->num);
-		pthread_mutex_lock(philo->right_fork);
+		pthread_mutex_lock(&(philo->right_fork));
 		printf("%d %d has taken a fork\n", timestamp, philo->num);
 		printf("%d %d is eating\n", timestamp, philo->num);
-		pthread_mutex_unlock(philo->left_fork);
-		pthread_mutex_unlock(philo->right_fork);
+		pthread_mutex_unlock(&(philo->left_fork));
+		pthread_mutex_unlock(&(philo->right_fork));
 		printf("%d %d is sleeping\n", timestamp, philo->num);
+		usleep(200000);
 	}
 	return (NULL);
 }
