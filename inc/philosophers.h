@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/13 23:32:52 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/14 18:59:50 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_philo
 	int	nb_meal;
 	int	finished;
 	int	time_since_last_meal;
-	pthread_t philo_id;
+	pthread_t id;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	right_fork;
 }	t_philo;
@@ -47,7 +47,6 @@ typedef struct s_philo
 typedef	struct s_mutex
 {
 }	t_mutex;
-
 
 typedef struct s_data
 {
@@ -61,7 +60,6 @@ typedef struct s_data
 	t_philo	*philo;
 	t_timeval start_time;
 }	t_data;
-
 
 /* PROTOTYPES */
 	/* CORE FOLDER */

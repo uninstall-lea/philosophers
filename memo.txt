@@ -26,11 +26,11 @@ int	main(void)
 
 int main(void)
 {
-	pthread_t 	*philo_id;
+	pthread_t 	*id;
 	void		*philo;
 
 	myargs = NULL;
-	if (pthread_create(philo_id, NULL &philo_routine, philo)) // on protège
+	if (pthread_create(id, NULL &philo_routine, philo)) // on protège
 		printf("Pthread_create failed\n");
 }
 
@@ -42,7 +42,7 @@ int main(void)
 
 int	main(void)
 {
-	pthread_join(philo_id, NULL);
+	pthread_join(id, NULL);
 }
 
 /******************************************************************************/
@@ -77,11 +77,11 @@ int	pthread_create_philo(t_philo *philo, int nb_philo)
 	while (i < nb_philo)
 	{
 		init_philo(i);
-		if (pthread_create(&philo[i]->philo_id, NULL, &philo_routine, &philo[i])) // on protège
+		if (pthread_create(&philo[i]->id, NULL, &philo_routine, &philo[i])) // on protège
 		{
 			printf("Pthread_create failed");
 			while (i--)
-				pthread_join(philo[i]->philo_id, NULL);
+				pthread_join(philo[i]->id, NULL);
 			return (FAILURE);
 		}
 		i++;
@@ -97,7 +97,7 @@ void	pthread_join_philo(t_philo *philo, int nb_philo)
 	i = 0;
 	while (i < nb_philo)
 	{
-		pthread_join(philo[i]->philo_id, NULL);
+		pthread_join(philo[i]->id, NULL);
 		i++;
 	}
 }

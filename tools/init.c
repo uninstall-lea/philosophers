@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:57 by lea               #+#    #+#             */
-/*   Updated: 2022/10/13 23:30:40 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/14 18:51:26 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ int	init_data(int ac, char **av)
 	t_data	*data;
 	
 	data = _data();
-	data->philo = malloc(sizeof(t_philo) * ft_atoi(av[1]));
-	if (!data->philo)
-	{
-		printf("Memory allocation failed\n");
-		return (FAILURE);
-	}
+	data->is_everyone_alive = TRUE;
 	data->nb_philo = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
@@ -40,7 +35,12 @@ int	init_data(int ac, char **av)
 		data->nb_meal_max = ft_atoi(av[5]);
 	else
 		data->nb_meal_max = INT_MAX;
-	data->is_everyone_alive = TRUE;
+	data->philo = malloc(sizeof(t_philo) * data->nb_philo);
+	if (!data->philo)
+	{
+		printf("Memory allocation failed\n");
+		return (FAILURE);
+	}
 	gettimeofday(&(data->start_time), NULL);
 	return (SUCCESS);
 }
@@ -51,7 +51,8 @@ void	init_philo(int i)
 	
 	philo = _philo(i);
 	philo->num = i + 1;
-	philo->nb_meal = 0;
+	philo->nb_meal = 1;
 	philo->finished = FALSE;
 	philo->time_since_last_meal = 0;
+	init_mutex(i);
 }
