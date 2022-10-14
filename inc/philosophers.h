@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/14 18:59:50 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/14 19:48:03 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_philo
 
 typedef	struct s_mutex
 {
+	pthread_mutex_t *fork;
+	pthread_mutex_t baton_de_parole;
 }	t_mutex;
 
 typedef struct s_data
@@ -73,7 +75,7 @@ int		everyone_alive_and_hungry(t_philo *philo);
 		/* INIT FILE */
 int		init_data(int ac, char **av);
 void	init_philo(int i);
-void	init_mutex(int i);
+void	init_mutex(void);
 		/* PTHREAD FILE */
 int		pthread_create_philo(void);
 void	pthread_join_philo(void);

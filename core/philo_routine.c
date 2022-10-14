@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/10/14 18:54:46 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/14 20:00:11 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,50 @@ int	get_timestamp(void)
 	return (timestamp);
 }
 
+void	philo_thinking(t_philo *philo)
+{
+	t_data	*data;
 
+	data = _data();
+	pthread_mutex_lock(&(data->mutex.baton_de_parole));
+	printf("%d %d is thinking\n", get_timestamp(), philo->num);
+	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
+}
+
+void	philo_eating(t_philo *philo)
+{
+	t_data	*data;
+
+	data = _data();
+	pthread_mutex_lock(&(data->mutex.baton_de_parole));
+	printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
+	printf("%d %d has taken a fork\n", get_timestamp(), philo->num);
+	printf("%d %d is eating\n", get_timestamp(), philo->num);
+	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
+	usleep(data->time_to_die);
+}
+
+void	philo_sleeping(t_philo *philo)
+{
+	t_data	*data;
+
+	data = _data();
+	pthread_mutex_lock(&(data->mutex.baton_de_parole));
+	printf("%d %d is sleeping\n", get_timestamp(), philo->num);
+	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
+	usleep(data->time_to_sleep);
+}
 
 void	*philo_routine(void *philo_ptr)
 {
 	t_philo	*philo;
-	int		timestamp;
-
+	
 	philo = philo_ptr;
 	while (everyone_alive_and_hungry(philo) == TRUE)
 	{
-		timestamp = get_timestamp();
-		printf("%d %d is thinking\n", timestamp, philo->num);
-		pthread_mutex_lock(&(philo->left_fork));
-		printf("%d %d has taken a fork\n", timestamp, philo->num);
-		pthread_mutex_lock(&(philo->right_fork));
-		printf("%d %d has taken a fork\n", timestamp, philo->num);
-		printf("%d %d is eating\n", timestamp, philo->num);
-		pthread_mutex_unlock(&(philo->left_fork));
-		pthread_mutex_unlock(&(philo->right_fork));
-		printf("%d %d is sleeping\n", timestamp, philo->num);
-		usleep(200000);
+		philo_thinking(philo);
+		philo_eating(philo);
+		philo_sleeping(philo);
 	}
 	return (NULL);
 }
