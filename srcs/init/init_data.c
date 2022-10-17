@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:03:57 by lea               #+#    #+#             */
-/*   Updated: 2022/10/14 19:47:56 by lea              ###   ########.fr       */
+/*   Created: 2022/10/17 17:50:24 by lea               #+#    #+#             */
+/*   Updated: 2022/10/17 18:21:51 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../../inc/philosophers.h"
 
 void	init_data_div(int ac, char **av)
 {
@@ -36,21 +36,6 @@ void	init_data_time_to(char **av)
 	data->time_to_sleep = ft_atoi(av[4]);
 }
 
-void	init_mutex(void)
-{
-	int		i;
-	t_data	*data;
-	
-	i = 0;
-	data = _data();
-	while (i < data->nb_philo)
-	{
-		pthread_mutex_init(&(data->mutex.fork[i]), NULL);
-		i++;
-	}
-	pthread_mutex_init(&(data->mutex.baton_de_parole), NULL);
-}
-
 int	init_data(int ac, char **av)
 {
 	t_data	*data;
@@ -67,16 +52,4 @@ int	init_data(int ac, char **av)
 	}
 	init_mutex();
 	return (SUCCESS);
-}
-
-
-void	init_philo(int i)
-{
-	t_philo	*philo;
-	
-	philo = _philo(i);
-	philo->num = i + 1;
-	philo->nb_meal = 1;
-	philo->finished = FALSE;
-	philo->time_since_last_meal = 0;
 }

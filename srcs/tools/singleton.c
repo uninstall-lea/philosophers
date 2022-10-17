@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   singleton.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 19:18:39 by lea               #+#    #+#             */
-/*   Updated: 2022/10/13 23:19:45 by lea              ###   ########.fr       */
+/*   Created: 2022/10/03 17:05:01 by lea               #+#    #+#             */
+/*   Updated: 2022/10/17 18:22:49 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../../inc/philosophers.h"
 
-int	ft_atoi(const char *nptr)
+t_data	*_data(void)
 {
-	int	res;
-	int	sign;
+	static t_data	data;
+	static int		init = YES;
 
-	res = 0;
-	sign = 1;
-	while (*nptr == ' ' || (*nptr >= '\t' && *nptr <= '\r'))
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
+	if (init == YES)
 	{
-		if (*nptr == '-')
-			sign = -1;
-		nptr++;
+		init = NO;
+		memset(&data, 0, sizeof(t_data));
 	}
-	while (ft_isdigit(*nptr))
-	{
-		res = (res * 10) + (*nptr - '0');
-		nptr++;
-	}
-	if (*nptr)
-		return (0);
-	return (res * sign);
+	return (&data);
+}
+
+t_philo *_philo(int i)
+{
+	t_data	*data;
+
+	data = _data();
+	return (&(data->philo[i]));
 }

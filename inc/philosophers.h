@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/14 19:48:03 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/17 18:41:45 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 /* DEFINES */
 # define YES	 1
 # define NO 	 0
+# define ODD	 1
+# define EVEN	 0
 # define TRUE	 1
 # define FALSE	 0
 # define SUCCESS 1
@@ -67,10 +69,11 @@ typedef struct s_data
 	/* CORE FOLDER */
 		/* PHILO ROUTINE FILE */
 void	*philo_routine(void *philo);
-	/* TOOLS FOLDER */
-		/* CHECK ARGS FILE */
+	/* PARSING FOLDER */
+		/* CHECK_ARGS FILE*/
 int		check_args(int ac, char **av);
-		/* CHECK STATUS FILE */
+	/* TOOLS FOLDER */
+		/* CHECKING FILE */
 int		everyone_alive_and_hungry(t_philo *philo);
 		/* INIT FILE */
 int		init_data(int ac, char **av);
@@ -82,7 +85,10 @@ void	pthread_join_philo(void);
 		/* SINGLETON FILE */
 t_data	*_data(void);
 t_philo *_philo(int i);
-		/* NOT_LIBFT */
+		/* TOOLS FILE */
+int		get_timestamp(void);
+void	print(int num, char *string);
+/* NOT_LIBFT */
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);
 

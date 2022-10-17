@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 16:59:58 by lea               #+#    #+#             */
-/*   Updated: 2022/10/14 19:14:34 by lea              ###   ########.fr       */
+/*   Created: 2022/10/03 17:03:18 by lea               #+#    #+#             */
+/*   Updated: 2022/10/17 18:22:31 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "../../inc/philosophers.h"
 
-int main(int ac, char **av)
+int	check_args(int ac, char **av)
 {
-	if (!check_args(ac, av))
+
+	if (ac < 5 || ac > 6)
+	{	
+		printf("Wrong number of args given\n");
 		return (FAILURE);
-	if (!init_data(ac, av))
+	}
+	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[1]) > 200)
+	{
+		printf("Wrong number of philos given\n");
 		return (FAILURE);
-	if (!pthread_create_philo())
+	}
+	if (ft_atoi(av[2]) <= 0 || ft_atoi(av[3]) <= 0 || ft_atoi(av[4]) <= 0)
+	{
+		printf("Donne plus de temps radin !\n");
 		return (FAILURE);
-	pthread_join_philo();
+	}
+	if (ac == 6 && ft_atoi(av[5]) <= 0)
+	{
+		printf("You can't eat a negative amount of time !\n");
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
