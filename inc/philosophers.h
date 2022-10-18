@@ -37,32 +37,32 @@ typedef	struct timeval t_timeval;
 /* STRUCTS */
 typedef struct s_philo
 {
-	int	num;
-	int	nb_meal;
-	int	finished;
-	int	time_since_last_meal;
-	pthread_t id;
+	int				num;
+	int				nb_meal;
+	int				finished;
+	pthread_t 		id;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	right_fork;
+	t_timeval		time_since_last_meal;
 }	t_philo;
 
 typedef	struct s_mutex
 {
-	pthread_mutex_t *fork;
+	pthread_mutex_t	*fork;
 	pthread_mutex_t baton_de_parole;
 }	t_mutex;
 
 typedef struct s_data
 {
-	int	nb_philo;
-	int	nb_meal_max;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	is_everyone_alive;
-	t_mutex	mutex;
-	t_philo	*philo;
-	t_timeval start_time;
+	int			nb_philo;
+	int			nb_meal_max;
+	int			time_to_die;
+	int			time_to_eat;
+	int			time_to_sleep;
+	int			is_everyone_alive;
+	t_mutex		mutex;
+	t_philo		*philo;
+	t_timeval	start_time;
 }	t_data;
 
 /* PROTOTYPES */
@@ -85,8 +85,10 @@ void	pthread_join_philo(void);
 		/* SINGLETON FILE */
 t_data	*_data(void);
 t_philo *_philo(int i);
-		/* TOOLS FILE */
+		/* DIVERS FILE */
 int		get_timestamp(void);
+void 	free_all_data(void);
+void	take_forks(t_philo *philo);
 void	print(int num, char *string);
 /* NOT_LIBFT */
 int		ft_isdigit(int c);

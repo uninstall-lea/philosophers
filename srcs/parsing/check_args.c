@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/philosophers.h"
+#include "philosophers.h"
 
 int	check_args(int ac, char **av)
 {

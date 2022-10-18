@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/philosophers.h"
+#include "philosophers.h"
 
 t_data	*_data(void)
 {

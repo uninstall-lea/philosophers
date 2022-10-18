@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/philosophers.h"
+#include "philosophers.h"
 
 void	init_data_div(int ac, char **av)
 {

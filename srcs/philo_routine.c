@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philosophers.h"
+#include "philosophers.h"
 
 
 void	philo_thinking(t_philo *philo)
@@ -29,11 +29,12 @@ void	philo_eating(t_philo *philo)
 
 	data = _data();
 	pthread_mutex_lock(&(data->mutex.baton_de_parole));
-	print(philo->num, "has taken a fork");
-	print(philo->num, "has taken a fork");
+	take_forks(philo);
 	print(philo->num, "is eating");
+	philo->nb_meal++;
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
-	usleep(data->time_to_die);
+	gettimeofday(&philo->time_since_last_meal, NULL);
+	usleep(data->time_to_eat * 1000);
 }
 
 void	philo_sleeping(t_philo *philo)
@@ -44,15 +45,7 @@ void	philo_sleeping(t_philo *philo)
 	pthread_mutex_lock(&(data->mutex.baton_de_parole));
 	print(philo->num, "is sleeping");
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
-	usleep(data->time_to_sleep);
-}
-
-void	take_fork(t_philo *philo)
-{
-	if (philo->num % 2 == ODD)
-		philo->left_fork = data->mutex.fork[i]
-	else if (philo->num % 2 == EVEN)
-		lock(fourchette->droite)
+	usleep(data->time_to_sleep * 1000);
 }
 
 void	*philo_routine(void *philo_ptr)

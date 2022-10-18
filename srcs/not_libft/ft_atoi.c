@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/philosophers.h"
+#include "philosophers.h"
 
 int	ft_atoi(const char *nptr)
 {

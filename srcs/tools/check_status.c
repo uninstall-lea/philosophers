@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/philosophers.h"
+#include "philosophers.h"
 
 void	check_death(t_philo *philo)
 {
 	t_data	*data;
 
 	data = _data();
-	if (philo->time_since_last_meal > data->time_to_die)
+	if (philo->time_since_last_meal.tv_usec > data->time_to_die)
 	{
 		pthread_mutex_lock(&(data->mutex.baton_de_parole));
 		printf("%d %d died\n", get_timestamp(), philo->num);

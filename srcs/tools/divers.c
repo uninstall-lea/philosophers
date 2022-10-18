@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/philosophers.h"
+#include "philosophers.h"
 
 int	get_timestamp(void)
 {
@@ -23,6 +23,32 @@ int	get_timestamp(void)
 	timestamp = (current_time.tv_sec - data->start_time.tv_sec) * 1000
 				+ (current_time.tv_usec - data->start_time.tv_usec) / 1000;
 	return (timestamp);
+}
+
+void	take_forks(t_philo *philo)
+{
+	if (philo->num % 2 == ODD)
+	{
+		pthread_mutex_lock(&philo->left_fork);
+		print(philo->num, "has taken a fork");
+		pthread_mutex_unlock(&philo->left_fork);
+
+	}
+	else if (philo->num % 2 == EVEN)
+	{
+		pthread_mutex_lock(&philo->right_fork);
+		print(philo->num, "has taken a fork");
+		pthread_mutex_unlock(&philo->right_fork);
+	}
+}
+
+void free_all_data(void)
+{
+	t_data	*data;
+
+	data = _data();
+	free(data->philo);
+	free(data->mutex.fork);
 }
 
 void	print(int num, char *string)

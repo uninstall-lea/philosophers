@@ -11,8 +11,10 @@
 # **************************************************************************** #
 
 CC =		gcc
-CFLAGS =	-Wall -Wextra -Werror
+CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
+
+INC_DIR =	inc
 
 SRCS =		srcs/init/init_data.c		\
 			srcs/init/init_mutex.c		\
@@ -29,12 +31,16 @@ SRCS =		srcs/init/init_data.c		\
 
 OBJS =		$(SRCS:.c=.o)
 
+%.o: %.c
+			$(CC) $(CFLAGS) -I ${INC_DIR} -pthread -c $< -o $@
+
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -g3 -I. -pthread
+			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -pthread
 
 all:		$(NAME)
 
-clean:		rm -rf $(NAME)
+clean:		
+			rm -rf $(NAME)
 
 fclean:		clean
 			rm -rf $(NAME)
