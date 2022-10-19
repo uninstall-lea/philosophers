@@ -18,6 +18,7 @@ void	init_data_div(int ac, char **av)
 	
 	data = _data();
 	data->nb_philo = ft_atoi(av[1]);
+	printf("%d\n", data->nb_philo);
 	if (ac == 6)
 		data->nb_meal_max = ft_atoi(av[5]);
 	else

@@ -32,9 +32,10 @@ void	philo_eating(t_philo *philo)
 	take_forks(philo);
 	print(philo->num, "is eating");
 	philo->nb_meal++;
+	philo->time_of_last_meal = get_timestamp();
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
-	gettimeofday(&philo->time_since_last_meal, NULL);
 	usleep(data->time_to_eat * 1000);
+	drop_forks(philo);
 }
 
 void	philo_sleeping(t_philo *philo)

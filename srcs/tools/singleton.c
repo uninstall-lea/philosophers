@@ -28,7 +28,9 @@ t_data	*_data(void)
 t_philo *_philo(int i)
 {
 	t_data	*data;
+	t_philo	*philo;
 
 	data = _data();
-	return (&(data->philo[i]));
+	philo = &(data->philo[i]);
+	return (philo);
 }

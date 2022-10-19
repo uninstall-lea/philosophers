@@ -12,17 +12,28 @@
 
 #include "philosophers.h"
 
+int	time_since_last_meal(t_philo *philo)
+{
+	int	current_time;
+
+	current_time = get_timestamp();
+	return (current_time - philo->time_of_last_meal);
+
+}
+
 void	check_death(t_philo *philo)
 {
 	t_data	*data;
 
 	data = _data();
-	if (philo->time_since_last_meal.tv_usec > data->time_to_die)
+	if (time_since_last_meal(philo) > data->time_to_die)
 	{
 		pthread_mutex_lock(&(data->mutex.baton_de_parole));
-		printf("%d %d died\n", get_timestamp(), philo->num);
+		print(philo->num, "died");
 		pthread_mutex_unlock(&(data->mutex.baton_de_parole));
+		pthread_mutex_lock(&(data->mutex.is_everyone_alive_mutex));
 		data->is_everyone_alive = FALSE;
+		pthread_mutex_unlock(&(data->mutex.is_everyone_alive_mutex));
 	}
 }
 

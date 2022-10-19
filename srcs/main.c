@@ -22,5 +22,5 @@ int main(int ac, char **av)
 		return (FAILURE);
 	pthread_join_philo();
 	free_all_data();
-	return (SUCCESS);
+	return (0);
 }

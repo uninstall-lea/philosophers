@@ -19,17 +19,19 @@ void	init_philo(int i)
 	
 	data = _data();
 	philo = _philo(i);
+	printf("i : %d\n", i);
 	philo->num = i + 1;
 	philo->nb_meal = 1;
 	philo->finished = FALSE;
-	if (i == data->nb_philo - 1)
+	philo->time_of_last_meal = 0;
+	if (i == 0)
 	{
-		philo->left_fork = data->mutex.fork[i - 1];
-		philo->right_fork = data->mutex.fork[i];
+		philo->left_fork = data->mutex.fork[i];
+		philo->right_fork = data->mutex.fork[data->nb_philo - 1];
 	}
 	else
 	{
 		philo->left_fork = data->mutex.fork[i];
-		philo->right_fork = data->mutex.fork[i + 1];
+		philo->right_fork = data->mutex.fork[i - 1];
 	}
 }

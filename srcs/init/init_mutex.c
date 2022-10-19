@@ -25,4 +25,5 @@ void	init_mutex(void)
 		i++;
 	}
 	pthread_mutex_init(&(data->mutex.baton_de_parole), NULL);
+	pthread_mutex_init(&(data->mutex.is_everyone_alive_mutex), NULL);
 }

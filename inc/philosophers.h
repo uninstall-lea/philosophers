@@ -40,16 +40,17 @@ typedef struct s_philo
 	int				num;
 	int				nb_meal;
 	int				finished;
+	int				time_of_last_meal;
 	pthread_t 		id;
 	pthread_mutex_t	left_fork;
 	pthread_mutex_t	right_fork;
-	t_timeval		time_since_last_meal;
 }	t_philo;
 
 typedef	struct s_mutex
 {
 	pthread_mutex_t	*fork;
 	pthread_mutex_t baton_de_parole;
+	pthread_mutex_t	is_everyone_alive_mutex;
 }	t_mutex;
 
 typedef struct s_data
@@ -89,6 +90,7 @@ t_philo *_philo(int i);
 int		get_timestamp(void);
 void 	free_all_data(void);
 void	take_forks(t_philo *philo);
+void	drop_forks(t_philo *philo);
 void	print(int num, char *string);
 /* NOT_LIBFT */
 int		ft_isdigit(int c);

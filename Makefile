@@ -13,6 +13,7 @@
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
+ARG_PHILO =	2 200 200 200 5
 
 INC_DIR =	inc
 
@@ -39,6 +40,15 @@ $(NAME):	$(OBJS)
 
 all:		$(NAME)
 
+test:
+			./$(NAME) $(ARG_PHILO)
+
+test_mutex:
+			valgrind --tool=helgrind ./$(NAME) $(ARG_PHILO)
+
+test_leaks:
+			valgrind ./$(NAME) $(ARG_PHILO)
+
 clean:		
 			rm -rf $(NAME)
 
@@ -47,4 +57,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re test test_mutex test_leaks
