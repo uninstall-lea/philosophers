@@ -29,25 +29,25 @@ void	take_forks(t_philo *philo)
 {
 	if (philo->num % 2 == ODD)
 	{
-		pthread_mutex_lock(&philo->left_fork);
+		pthread_mutex_lock(philo->left_fork);
 		print(philo->num, "has taken a fork");
-		pthread_mutex_lock(&philo->right_fork);
+		pthread_mutex_lock(philo->right_fork);
 		print(philo->num, "has taken a fork");
 
 	}
 	else if (philo->num % 2 == EVEN)
 	{
-		pthread_mutex_lock(&philo->right_fork);
+		pthread_mutex_lock(philo->right_fork);
 		print(philo->num, "has taken a fork");
-		pthread_mutex_lock(&philo->left_fork);
+		pthread_mutex_lock(philo->left_fork);
 		print(philo->num, "has taken a fork");
 	}
 }
 
 void	drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(&philo->left_fork);
-	pthread_mutex_unlock(&philo->right_fork);
+	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->right_fork);
 }
 
 void free_all_data(void)

@@ -46,7 +46,7 @@ int	init_data(int ac, char **av)
 	init_data_time_to(av);
 	data->philo = malloc(sizeof(t_philo) * data->nb_philo);
 	data->mutex.fork = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
-	if (! data->philo || !data->mutex.fork)
+	if (!data->philo || !data->mutex.fork)
 	{
 		printf("Memory allocation failed\n");
 		return (FAILURE);

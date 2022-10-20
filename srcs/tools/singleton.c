@@ -12,6 +12,22 @@
 
 #include "philosophers.h"
 
+void    ft_bzero(void *s, size_t n)
+{
+	// la changer de place
+    char    *adresse;
+    int        i;
+
+    adresse = s;
+    i = 0;
+    while (n)
+    {
+        adresse[i] = 0;
+        i++;
+        n--;
+    }
+}
+
 t_data	*_data(void)
 {
 	static t_data	data;
@@ -20,7 +36,7 @@ t_data	*_data(void)
 	if (init == YES)
 	{
 		init = NO;
-		memset(&data, 0, sizeof(t_data));
+		ft_bzero(&data, sizeof(t_data));
 	}
 	return (&data);
 }

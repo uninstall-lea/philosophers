@@ -13,7 +13,7 @@
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
-ARG_PHILO =	2 200 200 200 5
+ARG_PHILO =	2 399 200 200 20
 
 INC_DIR =	inc
 
