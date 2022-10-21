@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/10/17 17:57:18 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/21 23:14:06 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ int	pthread_create_philo(void)
 
 	i = 0;
 	data = _data();
+	if (!data->philo)
+		printf("la loose2\n");
 	while (i < data->nb_philo)
 	{
+		printf("%d\n", i);
 		init_philo(i);
 		philo = _philo(i);
 		if (pthread_create(&(philo->id), NULL, &philo_routine, philo)) // on protège

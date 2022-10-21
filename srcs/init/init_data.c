@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:50:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/17 18:21:51 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/21 23:14:45 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_data_div(int ac, char **av)
 	
 	data = _data();
 	data->nb_philo = ft_atoi(av[1]);
-	printf("%d\n", data->nb_philo);
 	if (ac == 6)
 		data->nb_meal_max = ft_atoi(av[5]);
 	else
@@ -52,5 +51,7 @@ int	init_data(int ac, char **av)
 		return (FAILURE);
 	}
 	init_mutex();
+	if (!data->philo)
+		printf("la loose3\n");
 	return (SUCCESS);
 }

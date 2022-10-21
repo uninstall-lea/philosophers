@@ -6,14 +6,14 @@
 #    By: lea <lea@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 17:59:01 by lea               #+#    #+#              #
-#    Updated: 2022/10/17 18:21:18 by lea              ###   ########.fr        #
+#    Updated: 2022/10/21 21:31:42 by lea              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
-ARG_PHILO =	2 399 200 200 20
+ARG_PHILO =	4 300 10000 200 20
 
 INC_DIR =	inc
 
@@ -24,8 +24,10 @@ SRCS =		srcs/init/init_data.c		\
 			srcs/not_libft/ft_isdigit.c	\
 			srcs/parsing/check_args.c	\
 			srcs/tools/check_status.c	\
-			srcs/tools/singleton.c		\
 			srcs/tools/divers.c			\
+			srcs/tools/print.c			\
+			srcs/tools/singleton.c		\
+			srcs/tools/time.c			\
 			srcs/main.c					\
 			srcs/philo_routine.c		\
 			srcs/pthread.c				\

@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_philo.c                                       :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 17:51:31 by lea               #+#    #+#             */
-/*   Updated: 2022/10/21 23:06:49 by lea              ###   ########.fr       */
+/*   Created: 2022/10/21 18:57:59 by lea               #+#    #+#             */
+/*   Updated: 2022/10/21 19:00:16 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	init_philo(int i)
+int	get_timestamp(void)
 {
-	t_data	*data;
-	t_philo	*philo;
+	int			timestamp;
+	t_data		*data;
+	t_timeval	current_time;
 	
 	data = _data();
-	philo = _philo(i);
-	if (!philo)
-		printf("la loose\n");
-	philo->num = i + 1;
-	philo->nb_meal = 1;
-	philo->finished = FALSE;
-	philo->time_of_last_meal = 0;
-	if (i == 0)
-	{
-		philo->left_fork = &data->mutex.fork[i];
-		philo->right_fork = &data->mutex.fork[data->nb_philo - 1];
-	}
-	else
-	{
-		philo->left_fork = &data->mutex.fork[i];
-		philo->right_fork = &data->mutex.fork[i - 1];
-	}
+	gettimeofday(&current_time, NULL);
+	timestamp = (current_time.tv_sec - data->start_time.tv_sec) * 1000
+				+ (current_time.tv_usec - data->start_time.tv_usec) / 1000;
+	return (timestamp);
+}
+
+int	time_since_last_meal(t_philo *philo)
+{
+	int	current_time;
+
+	current_time = get_timestamp();
+	return (current_time - philo->time_of_last_meal);
+
 }

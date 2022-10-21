@@ -34,7 +34,7 @@ void	philo_eating(t_philo *philo)
 	philo->nb_meal++;
 	philo->time_of_last_meal = get_timestamp();
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
-	usleep(data->time_to_eat * 1000);
+	check_usleep_death(data->time_to_eat * 1000, philo);
 	drop_forks(philo);
 }
 
@@ -46,7 +46,7 @@ void	philo_sleeping(t_philo *philo)
 	pthread_mutex_lock(&(data->mutex.baton_de_parole));
 	print(philo->num, "is sleeping");
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
-	usleep(data->time_to_sleep * 1000);
+	check_usleep_death(data->time_to_sleep * 1000, philo);
 }
 
 void	*philo_routine(void *philo_ptr)

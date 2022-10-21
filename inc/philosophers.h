@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/17 18:41:45 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/21 22:59:04 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef	struct s_mutex
 {
 	pthread_mutex_t	*fork;
 	pthread_mutex_t baton_de_parole;
+	pthread_mutex_t	first_blood_mutex;
 	pthread_mutex_t	is_everyone_alive_mutex;
 }	t_mutex;
 
@@ -67,33 +68,43 @@ typedef struct s_data
 }	t_data;
 
 /* PROTOTYPES */
-	/* CORE FOLDER */
+
+	/* SRCS FOLDER */
 		/* PHILO ROUTINE FILE */
 void	*philo_routine(void *philo);
-	/* PARSING FOLDER */
-		/* CHECK_ARGS FILE*/
-int		check_args(int ac, char **av);
-	/* TOOLS FOLDER */
-		/* CHECKING FILE */
-int		everyone_alive_and_hungry(t_philo *philo);
-		/* INIT FILE */
-int		init_data(int ac, char **av);
-void	init_philo(int i);
-void	init_mutex(void);
 		/* PTHREAD FILE */
 int		pthread_create_philo(void);
 void	pthread_join_philo(void);
+
+	/* INIT FOLDER */
+int		init_data(int ac, char **av);
+void	init_philo(int i);
+void	init_mutex(void);
+
+	/* NOT_LIBFT FOLDER */
+int		ft_isdigit(int c);
+int		ft_atoi(const char *nptr);
+
+	/* PARSING FOLDER */
+int		check_args(int ac, char **av);
+
+	/* TOOLS FOLDER */
+		/* CHECK_STATUS FILE */
+int		everyone_alive_and_hungry(t_philo *philo);
+void	check_usleep_death(int sleep, t_philo *philo);
+		/* PRINT FILE */
+void	print(int num, char *string);
+void	print_death(t_philo *philo);
 		/* SINGLETON FILE */
 t_data	*_data(void);
 t_philo *_philo(int i);
-		/* DIVERS FILE */
+		/* TIME FILE */
 int		get_timestamp(void);
+int		time_since_last_meal(t_philo *philo);
+		/* DIVERS FILE */
+int		is_everyone_alive(void);
 void 	free_all_data(void);
 void	take_forks(t_philo *philo);
 void	drop_forks(t_philo *philo);
-void	print(int num, char *string);
-/* NOT_LIBFT */
-int		ft_isdigit(int c);
-int		ft_atoi(const char *nptr);
 
 #endif

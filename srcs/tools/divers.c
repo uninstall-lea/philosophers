@@ -6,23 +6,22 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:42:55 by lea               #+#    #+#             */
-/*   Updated: 2022/10/17 18:22:46 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/21 22:54:44 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	get_timestamp(void)
+int		is_everyone_alive(void)
 {
-	int			timestamp;
-	t_data		*data;
-	t_timeval	current_time;
-	
+	int		tmp;
+	t_data	*data;
+
 	data = _data();
-	gettimeofday(&current_time, NULL);
-	timestamp = (current_time.tv_sec - data->start_time.tv_sec) * 1000
-				+ (current_time.tv_usec - data->start_time.tv_usec) / 1000;
-	return (timestamp);
+	pthread_mutex_lock(&(data->mutex.is_everyone_alive_mutex));
+	tmp = data->is_everyone_alive;
+	pthread_mutex_unlock(&(data->mutex.is_everyone_alive_mutex));
+	return (tmp);
 }
 
 void	take_forks(t_philo *philo)
@@ -57,9 +56,4 @@ void free_all_data(void)
 	data = _data();
 	free(data->philo);
 	free(data->mutex.fork);
-}
-
-void	print(int num, char *string)
-{
-	printf("%d %d %s\n", get_timestamp(), num, string);
 }
