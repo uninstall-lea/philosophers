@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:50:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/21 23:14:45 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/22 00:35:01 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ int	init_data(int ac, char **av)
 		printf("Memory allocation failed\n");
 		return (FAILURE);
 	}
+//	if (!data->philo)
+//		printf("allo1\n");
+	init_philo();
 	init_mutex();
-	if (!data->philo)
-		printf("la loose3\n");
 	return (SUCCESS);
 }

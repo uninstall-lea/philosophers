@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/21 22:59:04 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/22 00:33:57 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	pthread_join_philo(void);
 
 	/* INIT FOLDER */
 int		init_data(int ac, char **av);
-void	init_philo(int i);
+void	init_philo(void);
 void	init_mutex(void);
 
 	/* NOT_LIBFT FOLDER */
