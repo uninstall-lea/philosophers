@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:42:55 by lea               #+#    #+#             */
-/*   Updated: 2022/10/21 22:54:44 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 00:44:03 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,29 @@ void	take_forks(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print(philo->num, "has taken a fork");
+		philo->have_left_fork = TRUE;
 		pthread_mutex_lock(philo->right_fork);
 		print(philo->num, "has taken a fork");
+		philo->have_right_fork = TRUE;
 
 	}
 	else if (philo->num % 2 == EVEN)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		print(philo->num, "has taken a fork");
+		philo->have_right_fork = TRUE;
 		pthread_mutex_lock(philo->left_fork);
 		print(philo->num, "has taken a fork");
+		philo->have_left_fork = TRUE;
 	}
 }
 
 void	drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->left_fork);
-	pthread_mutex_unlock(philo->right_fork);
+	if (philo->have_left_fork)
+		pthread_mutex_unlock(philo->left_fork);
+	if (philo->have_right_fork)
+		pthread_mutex_unlock(philo->right_fork);
 }
 
 void free_all_data(void)

@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/22 00:33:57 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 00:31:18 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_philo
 	int				num;
 	int				nb_meal;
 	int				finished;
+	int				have_left_fork;
+	int				have_right_fork;
 	int				time_of_last_meal;
 	pthread_t 		id;
 	pthread_mutex_t	*left_fork;

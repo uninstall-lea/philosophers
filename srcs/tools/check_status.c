@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/10/21 22:55:42 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 00:55:53 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	check_usleep_death(int sleep, t_philo *philo)
 {
 	while (sleep > 0 && is_everyone_alive() == TRUE)
 	{
-		usleep(50 * 1000);
-		sleep -= 50 * 1000;
+		usleep(500);
+		sleep -= 500;
 		check_death(philo);
 	}
 }

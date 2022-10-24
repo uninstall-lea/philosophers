@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:59:58 by lea               #+#    #+#             */
-/*   Updated: 2022/10/22 01:02:13 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/23 23:15:13 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 int main(int ac, char **av)
 {
-//	t_data *data;
+	t_data	*data;
 
 	data = _data();
 	if (!check_args(ac, av))
 		return (FAILURE);
 	if (!init_data(ac, av))
 		return (FAILURE);
-//	if (!data->philo)
-//		printf("allo3\n");
 	if (!pthread_create_philo())
 		return (FAILURE);
+	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
 	pthread_join_philo();
 	free_all_data();
 	return (0);
