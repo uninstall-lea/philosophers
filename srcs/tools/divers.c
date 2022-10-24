@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:42:55 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 00:44:03 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 01:20:58 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ void	take_forks(t_philo *philo)
 void	drop_forks(t_philo *philo)
 {
 	if (philo->have_left_fork)
+	{
 		pthread_mutex_unlock(philo->left_fork);
+		philo->left_fork = FALSE;
+	}
 	if (philo->have_right_fork)
+	{
 		pthread_mutex_unlock(philo->right_fork);
+		philo->right_fork = FALSE;
+	}
 }
 
 void free_all_data(void)

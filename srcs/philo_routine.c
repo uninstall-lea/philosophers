@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 00:36:32 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 01:21:27 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ void	*philo_routine(void *philo_ptr)
 		if (everyone_alive_and_hungry(philo))
 			philo_sleeping(philo);
 	}
-//	if (!everyone_alive_and_hungry(philo))
-//		drop_forks(philo);
+		drop_forks(philo);
 	printf("num : %d has ended routine\n", philo->num);
 	return (NULL);
 }
