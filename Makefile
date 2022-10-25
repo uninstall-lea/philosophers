@@ -6,14 +6,14 @@
 #    By: lea <lea@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 17:59:01 by lea               #+#    #+#              #
-#    Updated: 2022/10/24 23:57:54 by lea              ###   ########.fr        #
+#    Updated: 2022/10/25 17:38:05 by lea              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
-ARG_PHILO =	4 450 200 200 10
+ARG_PHILO =	4 500 200 200 20
 
 INC_DIR =	inc
 

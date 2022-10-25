@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 02:12:42 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 17:16:03 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	philo_eating(t_philo *philo)
 	print(philo->num, "is eating");
 	philo->nb_meal++;
 	philo->time_of_last_meal = get_timestamp();
-	check_usleep_death(data->time_to_eat * 1000, philo);
+	check_usleep_death(data->time_to_eat, philo);
 	drop_forks(philo);
 }
 
@@ -37,7 +37,7 @@ void	philo_sleeping(t_philo *philo)
 
 	data = _data();
 	print(philo->num, "is sleeping");
-	check_usleep_death(data->time_to_sleep * 1000, philo);
+	check_usleep_death(data->time_to_sleep, philo);
 }
 
 void	*philo_routine(void *philo_ptr)

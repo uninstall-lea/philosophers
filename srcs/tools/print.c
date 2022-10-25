@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:55:20 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 02:06:07 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 02:45:18 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	print_death(t_philo *philo)
 	{
 		first_blood = NO;
 		pthread_mutex_lock(&(data->mutex.baton_de_parole));
+//		usleep(3000);
 		printf("%d %d died\n", get_timestamp(), philo->num);
 		pthread_mutex_unlock(&(data->mutex.baton_de_parole));
 	}
