@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:55:20 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 00:07:05 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 02:06:07 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 void	print(int num, char *string)
 {
 	t_data	*data;
+	t_philo	*philo;
 	
 	data = _data();
+	philo = _philo(num - 1);
+	if (!everyone_alive_and_hungry(philo))
+		return ;
 	pthread_mutex_lock(&(data->mutex.baton_de_parole));
 	printf("%d %d %s\n", get_timestamp(), num, string);
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
@@ -34,6 +38,7 @@ void	print_death(t_philo *philo)
 		first_blood = NO;
 		pthread_mutex_lock(&(data->mutex.baton_de_parole));
 		printf("%d %d died\n", get_timestamp(), philo->num);
+		pthread_mutex_unlock(&(data->mutex.baton_de_parole));
 	}
 	pthread_mutex_unlock(&(data->mutex.first_blood_mutex));
 }

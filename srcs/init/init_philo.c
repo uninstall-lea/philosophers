@@ -6,7 +6,7 @@
 /*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:51:31 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 01:01:53 by lea              ###   ########.fr       */
+/*   Updated: 2022/10/25 02:03:55 by lea              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	init_philo(void)
 		philo->have_left_fork = FALSE;
 		philo->have_right_fork = FALSE;
 		philo->time_of_last_meal = 0;
-		printf("%d\n", i);
 		if (i == 0)
 		{
 			philo->left_fork = &data->mutex.fork[i];
@@ -40,8 +39,6 @@ void	init_philo(void)
 			philo->left_fork = &data->mutex.fork[i];
 			philo->right_fork = &data->mutex.fork[i - 1];
 		}
-		if (!philo->right_fork)
-			printf("olalala\n");
 		i++;
 	}
 }
