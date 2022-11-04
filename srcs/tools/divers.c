@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   divers.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:42:55 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 02:24:34 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/04 22:15:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-int		is_everyone_alive(void)
-{
-	int		tmp;
-	t_data	*data;
-
-	data = _data();
-	pthread_mutex_lock(&(data->mutex.is_everyone_alive_mutex));
-	tmp = data->is_everyone_alive;
-	pthread_mutex_unlock(&(data->mutex.is_everyone_alive_mutex));
-	return (tmp);
-}
 
 void	take_forks(t_philo *philo)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:55:20 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 02:45:18 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/04 22:13:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print(int num, char *string)
 	
 	data = _data();
 	philo = _philo(num - 1);
-	if (!everyone_alive_and_hungry(philo))
+	if (everyone_alive_and_hungry(philo) == FALSE)
 		return ;
 	pthread_mutex_lock(&(data->mutex.baton_de_parole));
 	printf("%d %d %s\n", get_timestamp(), num, string);

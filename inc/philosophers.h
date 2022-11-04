@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 00:31:18 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/04 22:15:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int		check_args(int ac, char **av);
 
 	/* TOOLS FOLDER */
 		/* CHECK_STATUS FILE */
+int		is_everyone_alive(t_philo *philo);
 int		everyone_alive_and_hungry(t_philo *philo);
 void	check_usleep_death(int sleep, t_philo *philo);
 		/* PRINT FILE */
@@ -104,7 +105,6 @@ t_philo *_philo(int i);
 int		get_timestamp(void);
 int		time_since_last_meal(t_philo *philo);
 		/* DIVERS FILE */
-int		is_everyone_alive(void);
 void 	free_all_data(void);
 void	take_forks(t_philo *philo);
 void	drop_forks(t_philo *philo);
