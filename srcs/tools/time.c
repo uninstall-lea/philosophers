@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:57:59 by lea               #+#    #+#             */
-/*   Updated: 2022/10/25 02:47:48 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/04 23:07:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	time_since_last_meal(t_philo *philo)
 	int	current_time;
 
 	current_time = get_timestamp();
-	//printf("num : %d   current_time : %d    time_of_last_meal : %d\n", philo->num, current_time, philo->time_of_last_meal);
-	//printf("time_since_last_meal :  %d\n", current_time - philo->time_of_last_meal);
 	return (current_time - philo->time_of_last_meal);
 
 }

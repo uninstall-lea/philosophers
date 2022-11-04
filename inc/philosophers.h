@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/11/04 22:15:27 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/04 23:06:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int		is_everyone_alive(t_philo *philo);
 int		everyone_alive_and_hungry(t_philo *philo);
 void	check_usleep_death(int sleep, t_philo *philo);
 		/* PRINT FILE */
-void	print(int num, char *string);
+void	print(t_philo *philo, char *string);
 void	print_death(t_philo *philo);
 		/* SINGLETON FILE */
 t_data	*_data(void);
