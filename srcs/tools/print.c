@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:55:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/04 23:08:32 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:19:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print(t_philo *philo, char *string)
 {
 	t_data	*data;
-	
+
 	data = _data();
 	if (everyone_alive_and_hungry(philo) == FALSE)
 		return ;

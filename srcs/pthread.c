@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pthread.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/10/24 23:50:13 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/05 00:02:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,31 +23,12 @@ int	pthread_create_philo(void)
 	while (i < data->nb_philo)
 	{
 		philo = _philo(i);
-		if (philo->num % 2 == EVEN)
+		if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
 		{
-			if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
-			{
-				printf("Pthread_create failed\n");
-				while (i--)
-					pthread_join(philo->id, NULL);
-				return (FAILURE);
-			}
-		}
-		i++;
-	}
-	i = 0;
-	while (i < data->nb_philo)
-	{
-		philo = _philo(i);
-		if (philo->num % 2 == ODD)
-		{
-			if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
-			{
-				printf("Pthread_create failed\n");
-				while (i--)
-					pthread_join(philo->id, NULL);
-				return (FAILURE);
-			}
+			printf("Pthread_create failed\n");
+			while (i--)
+				pthread_join(philo->id, NULL);
+			return (FAILURE);
 		}
 		i++;
 	}

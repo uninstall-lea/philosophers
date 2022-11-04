@@ -6,12 +6,12 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/11/04 23:06:41 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:19:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
-#define PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 /* LIBRARIES */
 # include <stdio.h>
@@ -32,7 +32,7 @@
 # define SUCCESS 1
 # define FAILURE 0
 
-typedef	struct timeval t_timeval;
+typedef struct timeval	t_timeval;
 
 /* STRUCTS */
 typedef struct s_philo
@@ -43,15 +43,15 @@ typedef struct s_philo
 	int				have_left_fork;
 	int				have_right_fork;
 	int				time_of_last_meal;
-	pthread_t 		id;
+	pthread_t		id;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 }	t_philo;
 
-typedef	struct s_mutex
+typedef struct s_mutex
 {
 	pthread_mutex_t	*fork;
-	pthread_mutex_t baton_de_parole;
+	pthread_mutex_t	baton_de_parole;
 	pthread_mutex_t	first_blood_mutex;
 	pthread_mutex_t	is_everyone_alive_mutex;
 }	t_mutex;
@@ -86,6 +86,7 @@ void	init_mutex(void);
 	/* NOT_LIBFT FOLDER */
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);
+void	ft_bzero(void *s, size_t n);
 
 	/* PARSING FOLDER */
 int		check_args(int ac, char **av);
@@ -100,12 +101,12 @@ void	print(t_philo *philo, char *string);
 void	print_death(t_philo *philo);
 		/* SINGLETON FILE */
 t_data	*_data(void);
-t_philo *_philo(int i);
+t_philo	*_philo(int i);
 		/* TIME FILE */
 int		get_timestamp(void);
 int		time_since_last_meal(t_philo *philo);
 		/* DIVERS FILE */
-void 	free_all_data(void);
+void	free_all_data(void);
 void	take_forks(t_philo *philo);
 void	drop_forks(t_philo *philo);
 

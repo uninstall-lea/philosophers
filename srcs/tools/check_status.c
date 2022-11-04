@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/04 23:09:26 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:08:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_usleep_death(int sleep, t_philo *philo)
 	}
 }
 
-int		is_everyone_alive(t_philo *philo)
+int	is_everyone_alive(t_philo *philo)
 {
 	int		tmp;
 	t_data	*data;

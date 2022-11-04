@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:42:55 by lea               #+#    #+#             */
-/*   Updated: 2022/11/04 23:05:48 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:19:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	take_forks(t_philo *philo)
 		pthread_mutex_lock(philo->right_fork);
 		print(philo, "has taken a fork");
 		philo->have_right_fork = TRUE;
-
 	}
 	else if (philo->num % 2 == EVEN)
 	{
@@ -49,7 +48,7 @@ void	drop_forks(t_philo *philo)
 	}
 }
 
-void free_all_data(void)
+void	free_all_data(void)
 {
 	t_data	*data;
 

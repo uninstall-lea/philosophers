@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   singleton.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:05:01 by lea               #+#    #+#             */
-/*   Updated: 2022/10/21 23:11:53 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/05 00:19:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-void    ft_bzero(void *s, size_t n)
-{
-	// la changer de place
-    char    *adresse;
-    int        i;
-
-    adresse = s;
-    i = 0;
-    while (n)
-    {
-        adresse[i] = 0;
-        i++;
-        n--;
-    }
-}
 
 t_data	*_data(void)
 {
@@ -41,7 +25,7 @@ t_data	*_data(void)
 	return (&data);
 }
 
-t_philo *_philo(int i)
+t_philo	*_philo(int i)
 {
 	t_data	*data;
 	t_philo	*philo;

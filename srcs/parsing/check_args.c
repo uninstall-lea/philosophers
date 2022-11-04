@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:18 by lea               #+#    #+#             */
-/*   Updated: 2022/10/17 18:22:31 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/05 00:20:06 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	check_args(int ac, char **av)
 {
-
 	if (ac < 5 || ac > 6)
 	{	
 		printf("Wrong number of args given\n");

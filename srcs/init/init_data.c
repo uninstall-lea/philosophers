@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lea <lea@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:50:24 by lea               #+#    #+#             */
-/*   Updated: 2022/10/22 00:35:01 by lea              ###   ########.fr       */
+/*   Updated: 2022/11/05 00:07:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_data_div(int ac, char **av)
 {
 	t_data	*data;
-	
+
 	data = _data();
 	data->nb_philo = ft_atoi(av[1]);
 	if (ac == 6)
@@ -29,7 +29,7 @@ void	init_data_div(int ac, char **av)
 void	init_data_time_to(char **av)
 {
 	t_data	*data;
-	
+
 	data = _data();
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
@@ -39,7 +39,7 @@ void	init_data_time_to(char **av)
 int	init_data(int ac, char **av)
 {
 	t_data	*data;
-	
+
 	data = _data();
 	init_data_div(ac, av);
 	init_data_time_to(av);
@@ -50,8 +50,6 @@ int	init_data(int ac, char **av)
 		printf("Memory allocation failed\n");
 		return (FAILURE);
 	}
-//	if (!data->philo)
-//		printf("allo1\n");
 	init_philo();
 	init_mutex();
 	return (SUCCESS);
