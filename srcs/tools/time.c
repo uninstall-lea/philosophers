@@ -6,12 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:57:59 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:08:43 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:49:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+/* conversion en miliseconds */
 int	get_timestamp(void)
 {
 	int			timestamp;

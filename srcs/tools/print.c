@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:55:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:19:58 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:49:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_death(t_philo *philo)
 	if (first_blood == YES)
 	{
 		first_blood = NO;
-		usleep(3000);
+		check_usleep_death(3, philo);
 		pthread_mutex_lock(&(data->mutex.baton_de_parole));
 		printf("%d %d died\n", get_timestamp(), philo->num);
 		pthread_mutex_unlock(&(data->mutex.baton_de_parole));

@@ -6,14 +6,14 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 17:59:01 by lea               #+#    #+#              #
-#    Updated: 2022/11/05 00:21:28 by marvin           ###   ########.fr        #
+#    Updated: 2022/11/05 00:42:48 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
-ARG_PHILO =	5 610 200 200 20
+ARG_PHILO =	20 500 200 200 
 
 INC_DIR =	inc
 

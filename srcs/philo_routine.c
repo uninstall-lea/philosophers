@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:03:23 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 00:50:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	philo_thinking(t_philo *philo)
 {
 	print(philo, "is thinking");
-	usleep(2000);
+	check_usleep_death(2, philo);
 }
 
 void	philo_eating(t_philo *philo)

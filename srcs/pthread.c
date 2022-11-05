@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:02:31 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 01:04:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	pthread_create_philo(void)
+int	start_even(void)
 {
 	int		i;
 	t_data	*data;
@@ -23,15 +23,51 @@ int	pthread_create_philo(void)
 	while (i < data->nb_philo)
 	{
 		philo = _philo(i);
-		if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
+		if (i % 2 == EVEN)
 		{
-			printf("Pthread_create failed\n");
-			while (i--)
-				pthread_join(philo->id, NULL);
-			return (FAILURE);
+			if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
+			{
+				printf("Pthread_create failed\n");
+				while (i--)
+					pthread_join(philo->id, NULL);
+				return (FAILURE);
+			}
 		}
 		i++;
 	}
+	return (SUCCESS);
+}
+
+int	start_odd(void)
+{
+	int		i;
+	t_data	*data;
+	t_philo	*philo;
+
+	i = 0;
+	data = _data();
+	while (i < data->nb_philo)
+	{
+		philo = _philo(i);
+		if (i % 2 == ODD)
+		{
+			if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
+			{
+				printf("Pthread_create failed\n");
+				while (i--)
+					pthread_join(philo->id, NULL);
+				return (FAILURE);
+			}
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
+int	pthread_create_philo(void)
+{
+	if (start_even() == FAILURE || start_odd() == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
