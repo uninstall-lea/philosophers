@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 19:17:19 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/06 05:22:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,15 @@ void	check_usleep_death(int sleep, t_philo *philo)
 
 int	is_everyone_alive(t_philo *philo)
 {
-	int		tmp;
-	t_data	*data;
+	int			tmp;
+	t_data		*data;
+	static int	first_blood = YES;
 	
 	data = _data();
 	pthread_mutex_lock(&(data->mutex.is_everyone_alive_mutex));
-	if (time_since_last_meal(philo) > data->time_to_die)
+	if (time_since_last_meal(philo) > data->time_to_die && first_blood == YES)
 	{
+		first_blood = NO;
 		data->is_everyone_alive = FALSE;
 		data->num_philo_who_died = philo->num;
 	}
