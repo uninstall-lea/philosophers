@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:08:55 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 19:17:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ int	is_everyone_alive(t_philo *philo)
 {
 	int		tmp;
 	t_data	*data;
-
+	
 	data = _data();
 	pthread_mutex_lock(&(data->mutex.is_everyone_alive_mutex));
 	if (time_since_last_meal(philo) > data->time_to_die)
+	{
 		data->is_everyone_alive = FALSE;
+		data->num_philo_who_died = philo->num;
+	}
 	tmp = data->is_everyone_alive;
 	pthread_mutex_unlock(&(data->mutex.is_everyone_alive_mutex));
 	return (tmp);
@@ -50,11 +53,6 @@ int	everyone_alive_and_hungry(t_philo *philo)
 	data = _data();
 	if (is_everyone_alive(philo) == TRUE && philo->nb_meal <= data->nb_meal_max)
 		return (TRUE);
-	else if (is_everyone_alive(philo) == FALSE)
-	{
-		print_death(philo);
-		return (FALSE);
-	}
 	else
 		return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:50:05 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/06 01:58:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	philo_thinking(t_philo *philo)
 {
 	print(philo, "is thinking");
-	check_usleep_death(2, philo);
+	usleep(2000);
 }
 
 void	philo_eating(t_philo *philo)
 {
 	t_data	*data;
-
+	
 	data = _data();
 	take_forks(philo);
-	print(philo, "is eating");
+	print(philo, EATING_MSG);
 	philo->nb_meal++;
 	philo->time_of_last_meal = get_timestamp();
 	check_usleep_death(data->time_to_eat, philo);
@@ -42,9 +42,13 @@ void	philo_sleeping(t_philo *philo)
 
 void	*philo_routine(void *philo_ptr)
 {
+	t_data	*data;
 	t_philo	*philo;
 
+	data = _data();
 	philo = philo_ptr;
+	if (data->nb_philo == 1)
+		routine_for_lonely_philo(philo);
 	while (everyone_alive_and_hungry(philo))
 	{
 		philo_thinking(philo);
@@ -55,4 +59,16 @@ void	*philo_routine(void *philo_ptr)
 	}
 	drop_forks(philo);
 	return (NULL);
+}
+
+void	routine_for_lonely_philo(t_philo *philo)
+{
+	t_data	*data;
+
+	data = _data();
+	philo_thinking(philo);
+	pthread_mutex_lock(&(data->mutex.fork[0]));
+	print(philo, "has taken a fork");
+	usleep(data->time_to_die * 1000);
+	pthread_mutex_unlock(&(data->mutex.fork[0]));
 }

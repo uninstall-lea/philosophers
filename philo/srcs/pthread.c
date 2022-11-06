@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:02:07 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 01:04:19 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:42:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	start_even(void)
 			if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
 			{
 				printf("Pthread_create failed\n");
-				while (i--)
-					pthread_join(philo->id, NULL);
+				pthread_join_philo();
 				return (FAILURE);
 			}
 		}
@@ -54,8 +53,7 @@ int	start_odd(void)
 			if (pthread_create(&(philo->id), NULL, &philo_routine, philo))
 			{
 				printf("Pthread_create failed\n");
-				while (i--)
-					pthread_join(philo->id, NULL);
+				pthread_join_philo();
 				return (FAILURE);
 			}
 		}

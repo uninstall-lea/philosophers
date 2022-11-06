@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:51:31 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:06:55 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:11:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	init_philo(void)
 		philo = _philo(i);
 		philo->num = i + 1;
 		philo->nb_meal = 1;
-		philo->finished = FALSE;
 		philo->have_left_fork = FALSE;
 		philo->have_right_fork = FALSE;
 		philo->time_of_last_meal = 0;

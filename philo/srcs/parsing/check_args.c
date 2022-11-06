@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:18 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 01:09:53 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 19:39:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ int	check_args(int ac, char **av)
 		printf("Wrong number of args given\n");
 		return (FAILURE);
 	}
-	if (ft_atoi(av[1]) <= 0 || ft_atoi(av[1]) > 200)
+	if (ft_atoi(av[1]) <= 0)
 	{
-		printf("Wrong number of philos given\n");
+		printf("Wrong number of philos given 👻\n");
+		return (FAILURE);
+	}
+	if (ft_atoi(av[1]) > 200)
+	{
+		printf("Aie aie aie, tu vas tout casser 😱 !!\n");
 		return (FAILURE);
 	}
 	if (ft_atoi(av[2]) < 60 || ft_atoi(av[3]) < 60 || ft_atoi(av[4]) < 60)

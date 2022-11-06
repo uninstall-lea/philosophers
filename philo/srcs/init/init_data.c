@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 17:50:24 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 01:38:19 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:07:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_data_div(int ac, char **av)
 		data->nb_meal_max = ft_atoi(av[5]);
 	else
 		data->nb_meal_max = INT_MAX;
+	data->num_philo_who_died = 0;
 	data->is_everyone_alive = TRUE;
 	gettimeofday(&(data->start_time), NULL);
 }

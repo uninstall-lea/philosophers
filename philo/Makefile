@@ -6,14 +6,17 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 17:59:01 by lea               #+#    #+#              #
-#    Updated: 2022/11/05 00:42:48 by marvin           ###   ########.fr        #
+#    Updated: 2022/11/06 01:48:17 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
-ARG_PHILO =	20 500 200 200 
+ARG_PHILO =	4 310 200 100 
+
+RESET =		"\033[0m"
+BOLDGREEN = "\033[1m\033[32m"
 
 INC_DIR =	inc
 
@@ -36,10 +39,13 @@ SRCS =		srcs/init/init_data.c		\
 OBJS =		$(SRCS:.c=.o)
 
 %.o: %.c
-			$(CC) $(CFLAGS) -I ${INC_DIR} -pthread -c $< -o $@
+			@$(CC) $(CFLAGS) -I ${INC_DIR} -pthread -c $< -o $@
+			@echo Currently compiling $<
 
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -pthread
+			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -pthread
+			@echo Executable file has been created successfully
+			@echo 🦖$(BOLDGREEN) Compilation completed! $(RESET)🦖
 
 all:		$(NAME)
 
@@ -52,11 +58,13 @@ test_mutex:
 test_leaks:
 			valgrind ./$(NAME) $(ARG_PHILO)
 
-clean:		
-			rm -rf $(NAME)
+clean:
+			@rm -rf $(OBJS)
+			@echo All the .o files have been removed successfully
 
 fclean:		clean
-			rm -rf $(NAME)
+			@rm -rf $(NAME)
+			@echo Executable file has been removed successfully
 
 re:			fclean all
 

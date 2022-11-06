@@ -6,13 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 18:55:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 00:49:59 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/06 01:54:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	print(t_philo *philo, char *string)
+void	print(t_philo *philo, char *msg)
 {
 	t_data	*data;
 
@@ -20,24 +20,16 @@ void	print(t_philo *philo, char *string)
 	if (everyone_alive_and_hungry(philo) == FALSE)
 		return ;
 	pthread_mutex_lock(&(data->mutex.baton_de_parole));
-	printf("%d %d %s\n", get_timestamp(), philo->num, string);
+	printf(BOLDYELLOW "%d " RESET "%d %s\n", get_timestamp(), philo->num, msg);
 	pthread_mutex_unlock(&(data->mutex.baton_de_parole));
 }
 
-void	print_death(t_philo *philo)
+void	print_death(void)
 {
 	t_data		*data;
-	static int	first_blood = YES;
 
 	data = _data();
-	pthread_mutex_lock(&(data->mutex.first_blood_mutex));
-	if (first_blood == YES)
-	{
-		first_blood = NO;
-		check_usleep_death(3, philo);
-		pthread_mutex_lock(&(data->mutex.baton_de_parole));
-		printf("%d %d died\n", get_timestamp(), philo->num);
-		pthread_mutex_unlock(&(data->mutex.baton_de_parole));
-	}
-	pthread_mutex_unlock(&(data->mutex.first_blood_mutex));
+	if (data->num_philo_who_died != 0)
+		printf(BOLDYELLOW "%d " RESET "%d %s ☠️\n",
+			get_timestamp(), data->num_philo_who_died, DEATH_MSG);
 }
