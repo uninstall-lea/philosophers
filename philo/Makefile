@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 17:59:01 by lea               #+#    #+#              #
-#    Updated: 2022/11/06 01:48:17 by marvin           ###   ########.fr        #
+#    Updated: 2022/11/08 13:21:10 by lbisson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 
 NAME =		philosophers
-ARG_PHILO =	4 310 200 100 
+ARG_PHILO =	20 500 200 200
 
 RESET =		"\033[0m"
 BOLDGREEN = "\033[1m\033[32m"
