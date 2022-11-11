@@ -6,7 +6,7 @@
 /*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/11/08 13:47:31 by lbisson          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:12:41 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	philo_thinking(t_philo *philo)
 void	philo_eating(t_philo *philo)
 {
 	t_data	*data;
-	
+
 	data = _data();
 	take_forks(philo);
 	print(philo, EATING_MSG);

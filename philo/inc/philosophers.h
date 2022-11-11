@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 19:59:40 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:15:02 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_data
 	int			time_to_die;
 	int			time_to_eat;
 	int			time_to_sleep;
-//	int			death_timestamp;
 	int			is_everyone_alive;
 	int			num_philo_who_died;
 	t_mutex		mutex;

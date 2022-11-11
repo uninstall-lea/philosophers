@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:03:18 by lea               #+#    #+#             */
-/*   Updated: 2022/11/05 19:39:00 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:14:21 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	check_args(int ac, char **av)
 		return (FAILURE);
 	}
 	if (ft_atoi(av[1]) > 200)
-	{
-		printf("Aie aie aie, tu vas tout casser 😱 !!\n");
-		return (FAILURE);
-	}
+		return ((printf("Aie aie aie, tu vas tout casser 😱 !!\n"), FAILURE));
 	if (ft_atoi(av[2]) < 60 || ft_atoi(av[3]) < 60 || ft_atoi(av[4]) < 60)
 	{
 		printf("Donne plus de temps radin !\n");

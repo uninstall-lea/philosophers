@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_status.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/06 05:22:47 by marvin           ###   ########.fr       */
+/*   Updated: 2022/11/11 18:14:33 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_everyone_alive(t_philo *philo)
 	int			tmp;
 	t_data		*data;
 	static int	first_blood = YES;
-	
+
 	data = _data();
 	pthread_mutex_lock(&(data->mutex.is_everyone_alive_mutex));
 	if (time_since_last_meal(philo) > data->time_to_die && first_blood == YES)
