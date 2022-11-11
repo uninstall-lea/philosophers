@@ -6,7 +6,7 @@
 /*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:40:20 by lea               #+#    #+#             */
-/*   Updated: 2022/11/11 18:14:33 by lbisson          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:43:24 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,24 @@ int	is_everyone_alive(t_philo *philo)
 	return (tmp);
 }
 
-int	everyone_alive_and_hungry(t_philo *philo)
+int	is_everyone_hungry(t_philo *philo)
 {
 	t_data	*data;
 
 	data = _data();
-	if (is_everyone_alive(philo) == TRUE && philo->nb_meal <= data->nb_meal_max)
+	pthread_mutex_lock(&(data->mutex.is_everyone_hungry_mutex));
+	if (philo->nb_meal <= data->nb_meal_max)
+	{
+		pthread_mutex_unlock(&(data->mutex.is_everyone_hungry_mutex));
+		return (TRUE);
+	}
+	pthread_mutex_unlock(&(data->mutex.is_everyone_hungry_mutex));
+	return (FALSE);
+}
+
+int	everyone_alive_and_hungry(t_philo *philo)
+{
+	if (is_everyone_alive(philo) == TRUE && is_everyone_hungry(philo) == TRUE)
 		return (TRUE);
 	else
 		return (FALSE);

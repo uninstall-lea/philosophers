@@ -6,14 +6,14 @@
 #    By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/17 17:59:01 by lea               #+#    #+#              #
-#    Updated: 2022/11/08 16:27:28 by lbisson          ###   ########.fr        #
+#    Updated: 2022/11/11 19:03:59 by lbisson          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror -g3 -MMD
 NAME =		philosophers
-ARG_PHILO =	5 580 200 100 
+ARG_PHILO =	5 800 200 200 
 
 RESET =		"\033[0m"
 BOLDGREEN = "\033[1m\033[32m"
@@ -103,4 +103,4 @@ re:			fclean all
 
 -include : $(DEPS)
 
-.PHONY:		all clean fclean re test test_mutex test_leaks
+.PHONY:		all clean fclean re

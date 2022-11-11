@@ -6,7 +6,7 @@
 /*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:11:24 by lea               #+#    #+#             */
-/*   Updated: 2022/11/11 18:15:02 by lbisson          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:38:27 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_mutex
 	pthread_mutex_t	baton_de_parole;
 	pthread_mutex_t	first_blood_mutex;
 	pthread_mutex_t	is_everyone_alive_mutex;
+	pthread_mutex_t	is_everyone_hungry_mutex;
 }	t_mutex;
 
 typedef struct s_data

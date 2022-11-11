@@ -6,7 +6,7 @@
 /*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:04:51 by lea               #+#    #+#             */
-/*   Updated: 2022/11/11 18:12:41 by lbisson          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:46:07 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	philo_eating(t_philo *philo)
 	data = _data();
 	take_forks(philo);
 	print(philo, EATING_MSG);
+	pthread_mutex_lock(&(data->mutex.is_everyone_hungry_mutex));
 	philo->nb_meal++;
+	pthread_mutex_unlock(&(data->mutex.is_everyone_hungry_mutex));
 	philo->time_of_last_meal = get_timestamp();
 	check_usleep_death(data->time_to_eat, philo);
 	drop_forks(philo);

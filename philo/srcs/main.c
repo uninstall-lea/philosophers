@@ -6,7 +6,7 @@
 /*   By: lbisson <lbisson@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:59:58 by lea               #+#    #+#             */
-/*   Updated: 2022/11/11 18:12:25 by lbisson          ###   ########.fr       */
+/*   Updated: 2022/11/11 18:57:32 by lbisson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ void	watcher(void)
 	while (1)
 	{
 		i = 0;
-		philo = _philo(i);
 		while (i < data->nb_philo)
 		{
+			philo = _philo(i);
 			if (everyone_alive_and_hungry(philo) == FALSE)
-			{
-				print_death();
 				return ;
-			}
 			i++;
 		}
 		usleep(200);
@@ -49,6 +46,7 @@ int	main(int ac, char **av)
 	}
 	watcher();
 	pthread_join_philo();
+	print_death();
 	free_all_data();
 	return (0);
 }
